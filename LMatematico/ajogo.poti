@@ -1,0 +1,204 @@
+use "jerimum"
+
+f = Fonte(16)
+num = Fonte(36)
+quadrado_azul = Imagem("quadrado_azul.jpg") #rgb(170,213,255)
+quadrado_vermelho = Imagem("quadrado_vermelho.jpg") #rgb(255,170,172)
+quadrado_laranja = Imagem("quadrado_laranja.jpg") #rgb(255,200,145)
+quadrado_verde = Imagem("quadrado_verde.jpg") #rgb(170,230,177)
+quadrado_roxo = Imagem("quadrado_roxo.jpg") #rgb(255,255,145)
+quadrado_cinza = Imagem("quadrado_cinza.jpg") #rgb(230,230,230)
+btn = Imagem("botao.png").fatie(60,30)
+dado = Imagem("q_dado.png").fatie(64,64)
+var dado_num1 := 1
+var dado_num2 := 1
+var status := 1
+var statusDicas := falso
+
+atualize()
+
+# _____________________
+#        Dados
+#   Gira os dois dados
+# _____________________
+se Mouse.BOTAO_ESQUERDO e (Mouse.x >= 645 e Mouse.x <= 705) e (Mouse.y >= 145 e Mouse.y <= 175) então
+	dado_num1 := aleatorio(1,6)
+	dado_num2 := aleatorio(1,6)
+	status := 2
+senão
+	status := 1
+fim
+
+# _____________________
+#        Dicas
+#   Tecla H = Mostra
+#   Tecla F = Oculta
+# _____________________
+
+se Teclado.TECLA_H então
+	statusDicas := verdadeiro
+fim
+# -- DESATIVA --
+se Teclado.TECLA_F então
+	statusDicas := falso
+fim
+
+fim
+
+desenhe()
+
+#
+#	    TABULEIRO SOMA
+#
+
+f.desenhe("SOMA", 160, 280, 2, Cor.PRETO) # Titulo
+
+# L Azul
+quadrado_azul.desenhe(20, 80, 1)
+num.desenhe("4", 40, 120, 2)
+quadrado_azul.desenhe(20, 140, 1)
+num.desenhe("8", 40, 180, 2)
+quadrado_azul.desenhe(20, 200, 1)
+num.desenhe("12", 30, 240, 2)
+quadrado_azul.desenhe(80, 200, 1)
+num.desenhe("16", 90, 240, 2)
+
+# L Vermelho
+quadrado_vermelho.desenhe(20, 20, 1)
+num.desenhe("3", 40, 60, 2)
+quadrado_vermelho.desenhe(80, 20, 1)
+num.desenhe("6", 100, 60, 2)
+quadrado_vermelho.desenhe(80, 80, 1)
+num.desenhe("9", 100, 120, 2)
+quadrado_vermelho.desenhe(80, 140, 1)
+num.desenhe("15", 90, 180, 2)
+
+# L Verde
+quadrado_verde.desenhe(140, 20, 1)
+num.desenhe("7", 160, 60, 2)
+quadrado_verde.desenhe(140, 80, 1)
+num.desenhe("14", 150, 120, 2)
+quadrado_verde.desenhe(200, 20, 1)
+num.desenhe("21", 210, 60, 2)
+quadrado_verde.desenhe(260, 20, 1)
+num.desenhe("28", 270, 60, 2)
+
+# L Laranja
+quadrado_laranja.desenhe(320, 20, 1)
+num.desenhe("2", 340, 60, 2)
+quadrado_laranja.desenhe(320, 80, 1)
+num.desenhe("4", 340, 120, 2)
+quadrado_laranja.desenhe(260, 80, 1)
+num.desenhe("8", 280, 120, 2)
+quadrado_laranja.desenhe(200, 80, 1)
+num.desenhe("12", 210, 120, 2)
+
+# L Roxo
+quadrado_roxo.desenhe(140, 140, 1)
+num.desenhe("8", 160, 180, 2)
+quadrado_roxo.desenhe(140, 200, 1)
+num.desenhe("16", 150, 240, 2)
+quadrado_roxo.desenhe(200, 140, 1)
+num.desenhe("24", 210, 180, 2)
+quadrado_roxo.desenhe(260, 140, 1)
+num.desenhe("32", 270, 180, 2)
+
+# L Cinza
+quadrado_cinza.desenhe(320, 140, 1)
+num.desenhe("5", 340, 180, 2)
+quadrado_cinza.desenhe(320, 200, 1)
+num.desenhe("10", 330, 240, 2)
+quadrado_cinza.desenhe(260, 200, 1)
+num.desenhe("15", 270, 240, 2)
+quadrado_cinza.desenhe(200, 200, 1)
+num.desenhe("20", 210, 240, 2)
+
+###################################
+#	    TABULEIRO SUBTRAÇÃO
+###################################
+
+f.desenhe("SUBTRAÇÃO", 145, 560, 2, Cor.PRETO) #Titulo
+
+# L Cinza
+quadrado_cinza.desenhe(20, 360, 1)
+num.desenhe("4", 40, 400, 2)
+quadrado_cinza.desenhe(20, 420, 1)
+num.desenhe("8", 40, 460, 2)
+quadrado_cinza.desenhe(20, 480, 1)
+num.desenhe("12", 30, 520, 2)
+quadrado_cinza.desenhe(80, 480, 1)
+num.desenhe("16", 90, 520, 2)
+
+# L Verde
+quadrado_verde.desenhe(20, 300, 1)
+num.desenhe("3", 40, 340, 2)
+quadrado_verde.desenhe(80, 300, 1)
+num.desenhe("6", 100, 340, 2)
+quadrado_verde.desenhe(80, 360, 1)
+num.desenhe("9", 100, 400, 2)
+quadrado_verde.desenhe(80, 420, 1)
+num.desenhe("15", 90, 460, 2)
+
+# L Roxo
+quadrado_roxo.desenhe(140, 300, 1)
+num.desenhe("7", 160, 340, 2)
+quadrado_roxo.desenhe(140, 360, 1)
+num.desenhe("14", 150, 400, 2)
+quadrado_roxo.desenhe(200, 300, 1)
+num.desenhe("21", 210, 340, 2)
+quadrado_roxo.desenhe(260, 300, 1)
+num.desenhe("28", 270, 340, 2)
+
+# L Vermelho
+quadrado_vermelho.desenhe(320, 300, 1)
+num.desenhe("2", 340, 340, 2)
+quadrado_vermelho.desenhe(320, 360, 1)
+num.desenhe("4", 340, 400, 2)
+quadrado_vermelho.desenhe(260, 360, 1)
+num.desenhe("8", 280, 400, 2)
+quadrado_vermelho.desenhe(200, 360, 1)
+num.desenhe("12", 210, 400, 2)
+
+# L Laranja
+quadrado_laranja.desenhe(140, 420, 1)
+num.desenhe("8", 160, 460, 2)
+quadrado_laranja.desenhe(140, 480, 1)
+num.desenhe("16", 150, 520, 2)
+quadrado_laranja.desenhe(200, 420, 1)
+num.desenhe("24", 210, 460, 2)
+quadrado_laranja.desenhe(260, 420, 1)
+num.desenhe("32", 270, 460, 2)
+
+# L Azul
+quadrado_azul.desenhe(320, 420, 1)
+num.desenhe("5", 340, 460, 2)
+quadrado_azul.desenhe(320, 480, 1)
+num.desenhe("10", 330, 520, 2)
+quadrado_azul.desenhe(260, 480, 1)
+num.desenhe("15", 270, 520, 2)
+quadrado_azul.desenhe(200, 480, 1)
+num.desenhe("20", 210, 520, 2)
+
+# _____________________
+#    Quadro de Infos
+#    1: Dados
+#    2: Dicas
+# _____________________
+
+num.desenhe("▪ DADOS", 595, 60, 2, Cor.PRETO)
+dado[dado_num1].desenhe(615,75,1)
+dado[dado_num2].desenhe(683,75,1)
+btn[status].desenhe(645,145,1)
+
+num.desenhe("▪ DICAS", 595, 220, 2, Cor.PRETO)
+f.desenhe("Tecla H: Mostra", 615, 240, 2, Cor.PRETO)
+f.desenhe("Tecla F: Oculta", 615, 260, 2, Cor.PRETO)
+
+se statusDicas então 
+	f.desenhe("{dado_num1} + {dado_num2} = {dado_num1+dado_num2}", 420, 120, 2, Cor.PRETO)
+	f.desenhe("{dado_num1} - {dado_num2} = {abs(dado_num1-dado_num2)}", 420, 420, 2, Cor.PRETO)
+fim
+
+fim
+
+jogo.iniciar("Título", 800, 600, atualize, desenhe, 60)
